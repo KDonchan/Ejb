@@ -126,8 +126,12 @@ public class UserBean implements Serializable {
     //7月9日　ログイン処理
     public String loginNext(){
         String nextPage = null;
-        //List<UserTbl> aUser = db.loginUserTbl(userId, userPass);
-        
+        UserTbl aUser = db.loginUserTbl(userId, userPass);
+        if(aUser !=null){
+            userName=aUser.getUserName();
+            userKana = aUser.getUserKana();
+            nextPage = "user";
+        }
         return nextPage;
     }
     

@@ -24,8 +24,10 @@ public class Web3 {
     public UserTbl loginUserTbl(String wId , String wPass){
         String wsql="select u from UserTbl u where u.userId=?1 and u.userPass=?2";
         TypedQuery<UserTbl>wquery=  em.createQuery(wsql,UserTbl.class);
+        wquery.setParameter(1, wId);
+        wquery.setParameter(2, wPass);
         UserTbl wUser=null;
-        
+        wUser = wquery.getSingleResult();
         return wUser;
     }
     
